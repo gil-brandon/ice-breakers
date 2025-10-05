@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddmx18p10q06c"]
+[gd_scene load_steps=9 format=3 uid="uid://ddmx18p10q06c"]
 
 [ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_yp0ci"]
 [ext_resource type="Resource" uid="uid://gqd17uajvtn6" path="res://Terrain/data.hterrain" id="2_0ctsm"]
@@ -23,6 +23,8 @@ background_mode = 2
 sky = SubResource("Sky_0ctsm")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yp0ci"]
 
 [node name="HTerrain" type="Node3D"]
 script = ExtResource("1_yp0ci")
@@ -55,5 +57,9 @@ directional_shadow_max_distance = 1.0
 [node name="Main" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Main"]
-transform = Transform3D(1, 0, 0, 0, 0.5475194, 0.836793, 0, -0.836793, 0.5475194, -0.25484252, 24.609442, 28.87601)
-fov = 97.01115
+transform = Transform3D(1, 0, 0, 0, 0.8414448, 0.54034317, 0, -0.54034317, 0.8414448, -0.008302331, 21.99551, 36.355347)
+fov = 40.966034
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6881776, 0)
+mesh = SubResource("BoxMesh_yp0ci")
