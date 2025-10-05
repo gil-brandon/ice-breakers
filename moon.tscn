@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7j08sdk6d2cj"]
+[gd_scene load_steps=10 format=3 uid="uid://c7j08sdk6d2cj"]
 
 [ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_2g4ib"]
 [ext_resource type="Resource" uid="uid://gqd17uajvtn6" path="res://Moon- terrain/data.hterrain" id="2_e0epg"]
 [ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_bq21b"]
 [ext_resource type="PackedScene" uid="uid://dqom2iuqppbod" path="res://PasilloPT2REVENGE_finalll_ELBUENO.glb" id="4_1r202"]
+[ext_resource type="PackedScene" uid="uid://cpasxj4p5lu7e" path="res://HEXAGONOporfavor.glb" id="5_e0epg"]
 
 [sub_resource type="Resource" id="Resource_5nvcs"]
 script = ExtResource("3_bq21b")
@@ -63,5 +64,8 @@ directional_shadow_max_distance = 1.0
 transform = Transform3D(0.9120141, 0.17876041, -0.36915448, -0.034620356, 0.9303667, 0.36499214, 0.4086952, -0.3200977, 0.8546963, -25.613892, 26.467587, 64.01723)
 fov = 49.5
 
-[node name="Pasillo" parent="Main" instance=ExtResource("4_1r202")]
-transform = Transform3D(-0.20215492, 0, 0.97935355, 0, 1, 0, -0.97935355, 0, -0.20215492, 72.80901, 6.7782125, -5.079735)
+[node name="Pasillo" parent="." instance=ExtResource("4_1r202")]
+transform = Transform3D(-0.46575356, 0, 0.88491446, 0, 1, 0, -0.88491446, 0, -0.46575356, 56.986343, 7.716338, -26.089142)
+
+[node name="HEXAGONOporfavor" parent="." instance=ExtResource("5_e0epg")]
+transform = Transform3D(-0.02319419, 0, 0.044294808, 0, 0.049999997, 0, -0.044294808, 0, -0.02319419, 15.618879, 7.365017, -4.5028915)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctc2ewv2q6p41"]
+[gd_scene load_steps=14 format=3 uid="uid://ctc2ewv2q6p41"]
 
 [ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_o2prw"]
 [ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2_1wqb5"]
 [ext_resource type="Shader" uid="uid://cagucy3077d4r" path="res://water_shader.gdshader" id="3_ms7ir"]
 [ext_resource type="PackedScene" uid="uid://dqom2iuqppbod" path="res://PasilloPT2REVENGE_finalll_ELBUENO.glb" id="4_ms7ir"]
+[ext_resource type="PackedScene" uid="uid://cpasxj4p5lu7e" path="res://HEXAGONOporfavor.glb" id="5_d5kmw"]
 
 [sub_resource type="Resource" id="Resource_ms7ir"]
 script = ExtResource("2_1wqb5")
@@ -44,11 +45,11 @@ shader_parameter/roughness = 0.02
 shader_parameter/wave = SubResource("NoiseTexture2D_ce82k")
 shader_parameter/texture_normal = SubResource("NoiseTexture2D_ajofr")
 shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_kukjt")
-shader_parameter/wave_direction = Vector2(2, 0)
-shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/wave_direction = Vector2(2, 1)
+shader_parameter/wave_direction2 = Vector2(-2, 2)
 shader_parameter/time_scale = 0.025
 shader_parameter/noise_scale = 10.0
-shader_parameter/height_scale = 0.15
+shader_parameter/height_scale = 1.25
 shader_parameter/color_deep = Color(0, 0, 0, 1)
 shader_parameter/color_shallow = Color(0, 0, 0, 1)
 shader_parameter/beers_law = 2.0
@@ -56,7 +57,7 @@ shader_parameter/depth_offset = -0.75
 shader_parameter/edge_scale = 0.1
 shader_parameter/near = 1.0
 shader_parameter/far = 100.0
-shader_parameter/texture_scale = 1.0
+shader_parameter/texture_scale = 0.05
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_o2prw"]
@@ -90,13 +91,16 @@ mesh = SubResource("QuadMesh_o2prw")
 [node name="Main" type="Node3D" parent="."]
 
 [node name="Camara" type="Camera3D" parent="Main"]
-transform = Transform3D(0.8683874, -0.13055055, -0.4783931, 0.020632798, 0.9733999, -0.22818188, 0.49545705, 0.18827966, 0.8479818, -30.99501, 19.274479, 40.972744)
+transform = Transform3D(0.93702257, -0.098418646, -0.33511567, 0.017711172, 0.9716324, -0.23583192, 0.34881952, 0.21504456, 0.9121846, -30.99501, 20.016071, 40.972744)
 fov = 49.5
-
-[node name="Pasillo" parent="Main" instance=ExtResource("4_ms7ir")]
-transform = Transform3D(-0.20215492, 0, 0.97935355, 0, 1, 0, -0.97935355, 0, -0.20215492, 72.80901, 23.968178, -5.079735)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.83292115, -0.25638416, 0.49041766, 0, 0.8862036, 0.46329606, -0.5533916, 0.3858891, -0.7381378, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
+
+[node name="Pasillo" parent="." instance=ExtResource("4_ms7ir")]
+transform = Transform3D(-0.46575356, 0, 0.88491446, 0, 1, 0, -0.88491446, 0, -0.46575356, 56.986343, 25.863361, -26.089142)
+
+[node name="HEXAGONOporfavor" parent="." instance=ExtResource("5_d5kmw")]
+transform = Transform3D(-0.02319419, 0, 0.044294808, 0, 0.049999997, 0, -0.044294808, 0, -0.02319419, 15.618879, 25.51204, -4.5028915)
