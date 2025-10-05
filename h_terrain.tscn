@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_yp0ci"]
 [ext_resource type="Resource" uid="uid://gqd17uajvtn6" path="res://Terrain/data.hterrain" id="2_0ctsm"]
 [ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_3e3mc"]
+[ext_resource type="PackedScene" uid="uid://dqom2iuqppbod" path="res://PasilloPT2REVENGE_finalll_ELBUENO.glb" id="4_0ctsm"]
 
 [sub_resource type="Resource" id="Resource_ef5xg"]
 script = ExtResource("3_3e3mc")
@@ -10,10 +11,10 @@ mode = 0
 textures = [[], []]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yp0ci"]
-sky_top_color = Color(0.47028965, 0.44078213, 0.44036195, 1)
-sky_horizon_color = Color(0.6859808, 0.64324343, 0.61002594, 1)
+sky_top_color = Color(0.5211652, 0.43088907, 0.31706613, 1)
+sky_horizon_color = Color(0.9198491, 0.5399558, 0.33555418, 1)
 ground_bottom_color = Color(0.27389163, 0.13244987, 0, 1)
-ground_horizon_color = Color(0.6859808, 0.64324343, 0.61002594, 1)
+ground_horizon_color = Color(0.9999998, 0.5651568, 0.31209457, 1)
 
 [sub_resource type="Sky" id="Sky_0ctsm"]
 sky_material = SubResource("ProceduralSkyMaterial_yp0ci")
@@ -23,8 +24,10 @@ background_mode = 2
 sky = SubResource("Sky_0ctsm")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_yp0ci"]
+fog_enabled = true
+fog_light_color = Color(0.71415126, 0.49510568, 0.319195, 1)
+fog_density = 0.0
+fog_sky_affect = 0.737
 
 [node name="HTerrain" type="Node3D"]
 script = ExtResource("1_yp0ci")
@@ -49,17 +52,19 @@ metadata/_custom_type_script = "uid://b7gm2rhoypraw"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3e3mc")
 
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.81715, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.7815204, -0.28904095, 0.55288434, 0, 0.8862036, 0.46329606, -0.6238796, 0.36207533, -0.6925862, 0, 0, 0)
+transform = Transform3D(-0.83292115, -0.25638416, 0.49041766, 0, 0.8862036, 0.46329606, -0.5533916, 0.3858891, -0.7381378, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
 [node name="Main" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="Main"]
-transform = Transform3D(1, 0, 0, 0, 0.8414448, 0.54034317, 0, -0.54034317, 0.8414448, -0.008302331, 21.99551, 36.355347)
-fov = 40.966034
+[node name="Camara" type="Camera3D" parent="Main"]
+transform = Transform3D(0.9120141, 0.17876041, -0.36915448, -0.034620356, 0.9303667, 0.36499214, 0.4086952, -0.3200977, 0.8546963, -25.613892, 26.467587, 64.01723)
+fov = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6881776, 0)
-mesh = SubResource("BoxMesh_yp0ci")
+[node name="Pasillo" parent="Main" instance=ExtResource("4_0ctsm")]
+transform = Transform3D(-0.20215492, 0, 0.97935355, 0, 1, 0, -0.97935355, 0, -0.20215492, 72.80901, 6.7782125, -5.079735)
