@@ -1,13 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddmx18p10q06c"]
+[gd_scene load_steps=8 format=3 uid="uid://ddmx18p10q06c"]
 
 [ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_yp0ci"]
-[ext_resource type="Resource" path="res://Terrain/data.hterrain" id="2_0ctsm"]
+[ext_resource type="Resource" uid="uid://gqd17uajvtn6" path="res://Terrain/data.hterrain" id="2_0ctsm"]
 [ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_3e3mc"]
 
 [sub_resource type="Resource" id="Resource_ef5xg"]
 script = ExtResource("3_3e3mc")
 mode = 0
 textures = [[], []]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yp0ci"]
+sky_top_color = Color(0.47028965, 0.44078213, 0.44036195, 1)
+sky_horizon_color = Color(0.6859808, 0.64324343, 0.61002594, 1)
+ground_bottom_color = Color(0.27389163, 0.13244987, 0, 1)
+ground_horizon_color = Color(0.6859808, 0.64324343, 0.61002594, 1)
+
+[sub_resource type="Sky" id="Sky_0ctsm"]
+sky_material = SubResource("ProceduralSkyMaterial_yp0ci")
+
+[sub_resource type="Environment" id="Environment_3e3mc"]
+background_mode = 2
+sky = SubResource("Sky_0ctsm")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="HTerrain" type="Node3D"]
 script = ExtResource("1_yp0ci")
@@ -28,3 +43,17 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://b7gm2rhoypraw"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3e3mc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7815204, -0.28904095, 0.55288434, 0, 0.8862036, 0.46329606, -0.6238796, 0.36207533, -0.6925862, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="Main" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 0.5475194, 0.836793, 0, -0.836793, 0.5475194, -0.25484252, 24.609442, 28.87601)
+fov = 97.01115
