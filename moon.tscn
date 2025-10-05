@@ -1,38 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddmx18p10q06c"]
+[gd_scene load_steps=9 format=3 uid="uid://c7j08sdk6d2cj"]
 
-[ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_yp0ci"]
-[ext_resource type="Resource" uid="uid://gqd17uajvtn6" path="res://Terrain/data.hterrain" id="2_0ctsm"]
-[ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_3e3mc"]
-[ext_resource type="PackedScene" uid="uid://dqom2iuqppbod" path="res://PasilloPT2REVENGE_finalll_ELBUENO.glb" id="4_0ctsm"]
+[ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_2g4ib"]
+[ext_resource type="Resource" uid="uid://gqd17uajvtn6" path="res://Moon- terrain/data.hterrain" id="2_e0epg"]
+[ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_bq21b"]
+[ext_resource type="PackedScene" uid="uid://dqom2iuqppbod" path="res://PasilloPT2REVENGE_finalll_ELBUENO.glb" id="4_1r202"]
 
-[sub_resource type="Resource" id="Resource_ef5xg"]
-script = ExtResource("3_3e3mc")
+[sub_resource type="Resource" id="Resource_5nvcs"]
+script = ExtResource("3_bq21b")
 mode = 0
 textures = [[], []]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yp0ci"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8li54"]
 sky_top_color = Color(0.5211652, 0.43088907, 0.31706613, 1)
 sky_horizon_color = Color(0.9198491, 0.5399558, 0.33555418, 1)
 ground_bottom_color = Color(0.27389163, 0.13244987, 0, 1)
 ground_horizon_color = Color(0.9999998, 0.5651568, 0.31209457, 1)
 
 [sub_resource type="Sky" id="Sky_0ctsm"]
-sky_material = SubResource("ProceduralSkyMaterial_yp0ci")
+sky_material = SubResource("ProceduralSkyMaterial_8li54")
 
-[sub_resource type="Environment" id="Environment_3e3mc"]
-background_mode = 2
+[sub_resource type="Environment" id="Environment_tdk27"]
+background_mode = 1
 sky = SubResource("Sky_0ctsm")
+reflected_light_source = 1
 tonemap_mode = 2
 glow_enabled = true
-fog_enabled = true
 fog_light_color = Color(0.71415126, 0.49510568, 0.319195, 1)
 fog_density = 0.0
 fog_sky_affect = 0.737
 
-[node name="HTerrain" type="Node3D"]
-script = ExtResource("1_yp0ci")
+[node name="moon" type="Node3D"]
+script = ExtResource("1_2g4ib")
 centered = true
-_terrain_data = ExtResource("2_0ctsm")
+_terrain_data = ExtResource("2_e0epg")
 chunk_size = 32
 collision_enabled = true
 collision_layer = 1
@@ -40,7 +40,7 @@ collision_mask = 1
 shader_type = "Classic4Lite"
 custom_shader = null
 custom_globalmap_shader = null
-texture_set = SubResource("Resource_ef5xg")
+texture_set = SubResource("Resource_5nvcs")
 render_layers = 1
 cast_shadow = 1
 shader_params/u_ground_uv_scale = 20
@@ -50,10 +50,7 @@ shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://b7gm2rhoypraw"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3e3mc")
-
-[node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.81715, 0)
+environment = SubResource("Environment_tdk27")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.83292115, -0.25638416, 0.49041766, 0, 0.8862036, 0.46329606, -0.5533916, 0.3858891, -0.7381378, 0, 0, 0)
@@ -64,7 +61,7 @@ directional_shadow_max_distance = 1.0
 
 [node name="Camara" type="Camera3D" parent="Main"]
 transform = Transform3D(0.9120141, 0.17876041, -0.36915448, -0.034620356, 0.9303667, 0.36499214, 0.4086952, -0.3200977, 0.8546963, -25.613892, 26.467587, 64.01723)
-fov = 42.5
+fov = 49.5
 
-[node name="Pasillo" parent="Main" instance=ExtResource("4_0ctsm")]
+[node name="Pasillo" parent="Main" instance=ExtResource("4_1r202")]
 transform = Transform3D(-0.20215492, 0, 0.97935355, 0, 1, 0, -0.97935355, 0, -0.20215492, 72.80901, 6.7782125, -5.079735)

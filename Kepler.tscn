@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://ctc2ewv2q6p41"]
+
+[ext_resource type="Script" uid="uid://b7gm2rhoypraw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_o2prw"]
+[ext_resource type="Script" uid="uid://or5sq1ypbwsc" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2_1wqb5"]
+[ext_resource type="Shader" uid="uid://cagucy3077d4r" path="res://water_shader.gdshader" id="3_ms7ir"]
+[ext_resource type="PackedScene" uid="uid://dqom2iuqppbod" path="res://PasilloPT2REVENGE_finalll_ELBUENO.glb" id="4_ms7ir"]
+
+[sub_resource type="Resource" id="Resource_ms7ir"]
+script = ExtResource("2_1wqb5")
+mode = 0
+textures = [[], []]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1f57h"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ajofr"]
+noise = SubResource("FastNoiseLite_1f57h")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kukjt"]
+noise = SubResource("FastNoiseLite_1f57h")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8d5rt"]
+frequency = 0.032
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ce82k"]
+noise = SubResource("FastNoiseLite_8d5rt")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buxip"]
+render_priority = 0
+shader = ExtResource("3_ms7ir")
+shader_parameter/use_refraction_mode = 0.0
+shader_parameter/enable_transparency = 0.0
+shader_parameter/refraction_strength = 0.05
+shader_parameter/alpha_value = 0.5
+shader_parameter/albedo = Color(0.18144271, 0.43805146, 0.57525164, 1)
+shader_parameter/albedo2 = Color(0.21394879, 0.38197964, 0.5035857, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave = SubResource("NoiseTexture2D_ce82k")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ajofr")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_kukjt")
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.15
+shader_parameter/color_deep = Color(0, 0, 0, 1)
+shader_parameter/color_shallow = Color(0, 0, 0, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/texture_scale = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_o2prw"]
+material = SubResource("ShaderMaterial_buxip")
+size = Vector2(10000, 10000)
+orientation = 1
+
+[node name="Kepler" type="Node3D"]
+script = ExtResource("1_o2prw")
+_terrain_data = null
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_ms7ir")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://b7gm2rhoypraw"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.670918, 0)
+mesh = SubResource("QuadMesh_o2prw")
+
+[node name="Main" type="Node3D" parent="."]
+
+[node name="Camara" type="Camera3D" parent="Main"]
+transform = Transform3D(0.8683874, -0.13055055, -0.4783931, 0.020632798, 0.9733999, -0.22818188, 0.49545705, 0.18827966, 0.8479818, -30.99501, 19.274479, 40.972744)
+fov = 49.5
+
+[node name="Pasillo" parent="Main" instance=ExtResource("4_ms7ir")]
+transform = Transform3D(-0.20215492, 0, 0.97935355, 0, 1, 0, -0.97935355, 0, -0.20215492, 72.80901, 23.968178, -5.079735)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.83292115, -0.25638416, 0.49041766, 0, 0.8862036, 0.46329606, -0.5533916, 0.3858891, -0.7381378, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
