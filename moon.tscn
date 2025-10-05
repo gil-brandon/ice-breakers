@@ -55,17 +55,20 @@ environment = SubResource("Environment_tdk27")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.83292115, -0.25638416, 0.49041766, 0, 0.8862036, 0.46329606, -0.5533916, 0.3858891, -0.7381378, 0, 0, 0)
+light_energy = 1.2
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
 [node name="Main" type="Node3D" parent="."]
 
 [node name="Camara" type="Camera3D" parent="Main"]
-transform = Transform3D(0.9120141, 0.17876041, -0.36915448, -0.034620356, 0.9303667, 0.36499214, 0.4086952, -0.3200977, 0.8546963, -25.613892, 26.467587, 64.01723)
+transform = Transform3D(0.9120141, 0.17876041, -0.36915448, -0.034620356, 0.9303667, 0.36499214, 0.4086952, -0.3200977, 0.8546963, -50.61389, 28.467587, 85.01723)
 fov = 49.5
 
 [node name="Pasillo" parent="." instance=ExtResource("4_1r202")]
 transform = Transform3D(-0.46575356, 0, 0.88491446, 0, 1, 0, -0.88491446, 0, -0.46575356, 56.986343, 7.716338, -26.089142)
+visible = false
 
 [node name="HEXAGONOporfavor" parent="." instance=ExtResource("5_e0epg")]
 transform = Transform3D(-0.02319419, 0, 0.044294808, 0, 0.049999997, 0, -0.044294808, 0, -0.02319419, 15.618879, 7.365017, -4.5028915)
+visible = false

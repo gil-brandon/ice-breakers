@@ -91,7 +91,7 @@ mesh = SubResource("QuadMesh_o2prw")
 [node name="Main" type="Node3D" parent="."]
 
 [node name="Camara" type="Camera3D" parent="Main"]
-transform = Transform3D(0.93702257, -0.098418646, -0.33511567, 0.017711172, 0.9716324, -0.23583192, 0.34881952, 0.21504456, 0.9121846, -30.99501, 20.016071, 40.972744)
+transform = Transform3D(0.9323385, -0.10124744, -0.3471222, 0.017711153, 0.9716325, -0.23583198, 0.36115256, 0.21372728, 0.9076837, -26.356934, 21.521282, 40.972744)
 fov = 49.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -101,6 +101,8 @@ directional_shadow_max_distance = 1.0
 
 [node name="Pasillo" parent="." instance=ExtResource("4_ms7ir")]
 transform = Transform3D(-0.46575356, 0, 0.88491446, 0, 1, 0, -0.88491446, 0, -0.46575356, 56.986343, 25.863361, -26.089142)
+visible = false
 
 [node name="HEXAGONOporfavor" parent="." instance=ExtResource("5_d5kmw")]
 transform = Transform3D(-0.02319419, 0, 0.044294808, 0, 0.049999997, 0, -0.044294808, 0, -0.02319419, 15.618879, 25.51204, -4.5028915)
+visible = false
